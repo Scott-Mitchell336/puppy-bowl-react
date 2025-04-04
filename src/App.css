@@ -1,0 +1,117 @@
+.players-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.player-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  width: 200px;
+  height: 280px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.player-card h3 {
+  margin: 0 0 10px 0;
+}
+
+.player-card p {
+  margin: 0;
+  margin-bottom: 120px; /* This pushes the image away from the text */
+}
+
+.player-image {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+  margin-bottom: 20px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.nav-title {
+  color: white;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+}
+
+body {
+  padding-top: 70px;
+}
+
+.search-container input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  background-color: #fff;
+  color: black;
+}
+
+.add-player-btn {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-player-btn:hover {
+  background-color: #45a049;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
