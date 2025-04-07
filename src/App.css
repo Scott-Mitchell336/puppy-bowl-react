@@ -31,7 +31,7 @@
   margin-bottom: 120px; /* This pushes the image away from the text */
 }
 
-.player-image {
+.player-card-image {
   height: 100px;
   width: 100px;
   object-fit: cover;
@@ -58,6 +58,7 @@
   left: 0;
   z-index: 1000;
   box-sizing: border-box;
+  height: 66px;
 }
 
 .nav-title {
@@ -114,4 +115,48 @@ body {
 
 .search-btn:hover {
   background-color: #0056b3;
+}
+
+.player-details {
+  padding: 20px;
+  max-width: 800px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;  /* Adjust this value to move it closer/further from top */
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.player-info {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.player-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.player-stats {
+  flex: 1;
+  text-align: left;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* Aligns items to the start (left) of the container */
+  margin-top: 20px;  /* Adds space at the top */
+}
+
+.player-stats p {
+  margin: 10px 0;
+  font-size: 1.1em;
+  text-align: left;
+  width: 100%;  /* Ensures paragraphs take full width */
 }
