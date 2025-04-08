@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+//import { useNavigate } from "react-router";
 import Navbar from "../components/NavBar.jsx";
 import PlayerCard from "../components/PlayerCard.jsx";
 import "../App.css";
 
-function Home() {
-  const [players, setPlayers] = useState([]);
+function Home({setPlayers, players}) {
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate();
+  const [teams, setTeams] = useState([]);
 
   const fetchPlayers = async () => {
     try {
@@ -22,18 +21,44 @@ function Home() {
     }
   };
 
+  const fetchTeams = async () => {
+    try {
+      const response = await fetch(
+        "https://fsa-puppy-bowl.herokuapp.com/api/2412-FTB-MT-WEB-PT-PUPPIES/teams"
+      );
+      const data = await response.json();
+      setTeams(data.data.teams);
+    } catch (error) {
+      console.error("Error fetching teams:", error);
+    }
+  };
+
   useEffect(() => {
     fetchPlayers();
+    fetchTeams();
   }, []);
 
-  const filteredPlayers = players.filter((player) =>
-    player.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    player.breed.toLowerCase().includes(searchTerm.toLowerCase())
-);
+  const getTeamName = (teamId) => {
+    if (!teamId) return '';  // Return empty string if teamId is undefined
+    const team = teams.find(team => team.id === teamId);
+    return team ? team.name : '';
+  };
+  const filteredPlayers = players?.filter((player) => {
+    console.log("Player - ", player);
+    if (!player) return false; 
+    const teamName = getTeamName(player.teamId);
+    return player.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           player.breed.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           player.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           teamName.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
-  if (players.length === 0) {
+  if (!players || !players.length) {
     return <div>Loading...</div>;
   }
+  // if (!players || filteredPlayers.length === 0) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div>

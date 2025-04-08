@@ -28,7 +28,6 @@ function Player() {
   return (
     <div>
       <nav className="nav-bar">
-        
         <h1 className="nav-title">Puppy Bowl</h1>
       </nav>
 
