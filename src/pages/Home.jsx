@@ -4,9 +4,8 @@ import Navbar from "../components/NavBar.jsx";
 import PlayerCard from "../components/PlayerCard.jsx";
 import "../App.css";
 
-function Home({setPlayers, players}) {
+function Home({setPlayers, players, teams, setTeams}) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [teams, setTeams] = useState([]);
 
   const fetchPlayers = async () => {
     try {
@@ -56,10 +55,7 @@ function Home({setPlayers, players}) {
   if (!players || !players.length) {
     return <div>Loading...</div>;
   }
-  // if (!players || filteredPlayers.length === 0) {
-  //   return <div>Loading...</div>;
-  // }
-
+ 
   return (
     <div>
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />

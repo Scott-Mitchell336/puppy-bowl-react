@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-function Player() {
+function Player({ teams }) {
   const [player, setPlayer] = useState(null);
   const { id } = useParams();
 
@@ -20,6 +20,12 @@ function Player() {
 
     fetchPlayer();
   }, [id]);
+
+  const getTeamName = (teamId) => {
+    if (!teamId) return '';  // Return empty string if teamId is undefined
+    const team = teams.find(team => team.id === teamId);
+    return team ? team.name : '';
+  };
 
   if (!player) {
     return <div>Loading...</div>;
@@ -47,7 +53,7 @@ function Player() {
               <strong>Status:</strong> {player.status}
             </p>
             <p>
-              <strong>Team ID:</strong> {player.teamId || "No team assigned"}
+              <strong>Team:</strong> {getTeamName(player.teamId) || "No team assigned"}
             </p>
           </div>
         </div>

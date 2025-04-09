@@ -10,12 +10,13 @@ import './App.css'
 function App() {
 
   const [players, setPlayers] = useState([]);
+  const[teams, setTeams] = useState([]);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home players={players} setPlayers={setPlayers}/>} />
-        <Route path="/player/:id" element={<Player />} />
+        <Route path="/" element={<Home players={players} setPlayers={setPlayers} teams={teams} setTeams={setTeams} />} />   
+        <Route path="/player/:id" element={<Player teams={teams} />} />
         <Route path="/new-player" element={<NewPlayer setPlayers={setPlayers} players={players} />} /> 
       </Routes>
     </>

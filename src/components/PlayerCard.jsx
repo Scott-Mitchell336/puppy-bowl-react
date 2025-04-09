@@ -11,6 +11,7 @@ function PlayerCard({ player }) {
     >
       <h3>Player Name: {player.name}</h3>
       <p>Breed: {player.breed}</p>
+
       <img
         className="player-card-image"
         src={player.imageUrl}
